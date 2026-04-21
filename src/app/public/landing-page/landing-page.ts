@@ -3,6 +3,7 @@ import { Navbar } from "../components/navbar/navbar";
 import { Home } from "../components/home/home";
 import { Promociones } from "../components/promociones/promociones";
 import { Catalogo } from "../components/catalogo/catalogo";
+import { Footer } from "../components/footer/footer";
 
 @Component({
   selector: 'landing-page',
@@ -10,7 +11,8 @@ import { Catalogo } from "../components/catalogo/catalogo";
     Navbar,
     Home,
     Promociones,
-    Catalogo
+    Catalogo,
+    Footer
 ],
   templateUrl: './landing-page.html',
 })
