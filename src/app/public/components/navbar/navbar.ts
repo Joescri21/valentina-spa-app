@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 
   styles: `
   .navbar {
-    background-color: #fff;
+    background-color: #fffff;
     display: flex;
     justify-content: space-between;
     align-items: center;
