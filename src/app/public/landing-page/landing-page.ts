@@ -4,6 +4,7 @@ import { Home } from "../components/home/home";
 import { Promociones } from "../components/promociones/promociones";
 import { Catalogo } from "../components/catalogo/catalogo";
 import { Footer } from "../components/footer/footer";
+import { Contact } from "../components/contact/contact";
 
 @Component({
   selector: 'landing-page',
@@ -12,7 +13,8 @@ import { Footer } from "../components/footer/footer";
     Home,
     Promociones,
     Catalogo,
-    Footer
+    Footer,
+    Contact
 ],
   templateUrl: './landing-page.html',
 })
