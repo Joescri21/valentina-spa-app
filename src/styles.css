@@ -5,17 +5,6 @@
 }
 
 
-root {
-  --rosa-claro: #FDF0F5;
-  --rosa-fuerte: #E91E63;
-  --violeta: #7B1FA2;
-  --negro: #1A1A1A;
-  --blanco: #FFFFFF;
-}
-
-body {
-  background-color: var(--rosa-claro);
-  color: var(--negro);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 0;
+html {
+  scroll-behavior: smooth;
 }
