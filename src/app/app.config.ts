@@ -9,15 +9,11 @@ export const appConfig: ApplicationConfig = {
     provideZonelessChangeDetection(),
     provideRouter(
       routes,
-      withAnchorScrolling(),
+
       withInMemoryScrolling({
-        scrollPositionRestoration: 'enabled',
         anchorScrolling: 'enabled',
+        scrollPositionRestoration: 'enabled'
       })
     )
   ]
 };
-function withAnchorScrolling(): import("@angular/router").RouterFeatures {
-  throw new Error('Function not implemented.');
-}
-
