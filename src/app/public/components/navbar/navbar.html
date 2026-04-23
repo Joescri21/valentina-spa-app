@@ -8,9 +8,9 @@
 
     <div class="navbar-center hidden lg:flex">
       <ul class="menu menu-horizontal text-pink-500 px-1 gap-2 font-medium">
-        <li><a [routerLink]="['/']" fragment="servicios" class="hover:text-pink-700 text-lg transition-colors">Promociones</a></li>
-        <li><a [routerLink]="['/']" fragment="servicios" class="hover:text-pink-700 text-lg transition-colors">Servicios</a></li>
-        <li><a [routerLink]="['/']" fragment="contacto" class="hover:text-pink-700 text-lg transition-colors">Contatanos</a></li>
+        <li><a (click)="scrollTo('inicio')" class="hover:text-pink-700 text-lg transition-colors">Promociones</a></li>
+        <li><a (click)="scrollTo('servicios')" class="hover:text-pink-700 text-lg transition-colors">Servicios</a></li>
+        <li><a (click)="scrollTo('contacto')" class="hover:text-pink-700 text-lg transition-colors">Contatanos</a></li>
       </ul>
     </div>
 
