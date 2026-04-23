@@ -1,24 +1,41 @@
-<nav class="fixed top-0 w-full z-100">
-  <div class="navbar bg-white shadow-md px-4 lg:px-10">
-    <div class="navbar-start">
-      <a class="text-2xl font-bold italic text-rose-600 tracking-tighter">
-        Valentina<span class="text-pink-300">Spa</span>
-      </a>
-    </div>
+<div class="navbar bg-base-100 shadow-md fixed top-0 w-full z-100 px-4 md:px-8">
 
-    <div class="navbar-center hidden lg:flex">
-      <ul class="menu menu-horizontal text-pink-500 px-1 gap-2 font-medium">
-        <li><a (click)="scrollTo('inicio')" class="hover:text-pink-700 text-lg transition-colors">Inicio</a></li>
-        <li><a (click)="scrollTo('promociones')" class="hover:text-pink-700 text-lg transition-colors">Promociones</a></li>
-        <li><a (click)="scrollTo('servicios')" class="hover:text-pink-700 text-lg transition-colors">Servicios</a></li>
-        <li><a (click)="scrollTo('contacto')" class="hover:text-pink-700 text-lg transition-colors">Contatanos</a></li>
+  <div class="navbar-start">
+    <div class="dropdown">
+      <div tabindex="0" role="button" class="btn btn-ghost lg:hidden text-primary">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="4 6h16M4 12h8m-8 6h16" /></svg>
+      </div>
+      <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow-xl bg-base-100 rounded-box w-52 border border-primary/10 text-primary">
+        <li><a (click)="scrollTo('inicio')">Inicio</a></li>
+        <li><a (click)="scrollTo('promociones')">Promociones</a></li>
+        <li><a (click)="scrollTo('servicios')">Servicios</a></li>
+        <li><a (click)="scrollTo('contacto')">Contacto</a></li>
       </ul>
     </div>
+    <a class="text-lg md:text-xl font-bold text-primary tracking-tighter cursor-pointer" (click)="scrollTo('inicio')">
+      VALENTINA <span class="font-light">SPA</span>
+    </a>
+  </div>
 
-    <div class="navbar-end">
-      <a routerLink="/login" class="btn btn-primary btn-sm md:btn-md shadow-lg">
+  <div class="navbar-center hidden lg:flex">
+    <ul class="menu menu-horizontal px-1 font-semibold text-primary gap-4">
+      <li><a (click)="scrollTo('inicio')" class="hover:text-primary/70 transition-colors">Inicio</a></li>
+      <li><a (click)="scrollTo('promociones')" class="hover:text-primary/70 transition-colors">Promociones</a></li>
+      <li><a (click)="scrollTo('servicios')" class="hover:text-primary/70 transition-colors">Servicios</a></li>
+      <li><a (click)="scrollTo('contacto')" class="hover:text-primary/70 transition-colors">Contacto</a></li>
+    </ul>
+  </div>
+
+  <div class="navbar-end">
+    <div class="hidden md:flex">
+      <a class="btn btn-primary btn-md text-white rounded-full px-8 shadow-lg hover:scale-105 transition-all">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+        </svg>
         Iniciar Sesión
       </a>
     </div>
+
   </div>
-</nav>
+
+</div>
