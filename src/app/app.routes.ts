@@ -13,11 +13,7 @@ export const routes: Routes = [
     title: 'Valentina Spa',
     children: [
       {
-        path: '',
-        component: Home,
-      },
-      {
-        path: 'catalgo',
+        path: 'catalogo',
         component: Catalogo,
         title: 'Catálogo de Productos',
       }
