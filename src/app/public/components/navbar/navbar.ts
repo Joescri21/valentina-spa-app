@@ -5,7 +5,7 @@ import { RouterLink } from "@angular/router";
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './navbar.html',
 })
 export class Navbar {

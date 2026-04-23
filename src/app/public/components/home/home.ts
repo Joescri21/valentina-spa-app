@@ -27,13 +27,18 @@ export class Home {
       this.currentSlide = 1;
     }
 
-    // Buscamos el elemento por ID y lo scrolleamos
-    const element = document.getElementById(`item${this.currentSlide}`);
-    if (element) {
-      element.scrollIntoView({
-        behavior: 'smooth',
-        block: 'nearest',
-        inline: 'start'
+    // Seleccionamos el contenedor del carrusel
+    const container = document.querySelector('.carousel');
+    const slide = document.getElementById(`item${this.currentSlide}`);
+
+    if (container && slide) {
+      // Calculamos la posición del slide respecto al contenedor, no a la pantalla
+      const leftPosition = slide.offsetLeft;
+
+      // Movemos el scroll del contenedor manualmente
+      container.scrollTo({
+        left: leftPosition,
+        behavior: 'smooth'
       });
     }
   }
