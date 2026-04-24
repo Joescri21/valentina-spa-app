@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { LoginPage } from './modulos/auth/login-page/login-page';
 import { LandingPage } from './modulos/landing-page/landing-page';
 import { Catalogo } from './shared/components/catalogo/catalogo';
+import { BookingOptions } from './modulos/auth/booking-options/booking-options';
 
 
 export const routes: Routes = [
@@ -21,6 +22,11 @@ export const routes: Routes = [
     path: 'login',
     component: LoginPage,
     title: 'Iniciar Sesión',
+  },
+  {
+    path: 'booking',
+    component: BookingOptions,
+    title: 'Opciones de Reserva',
   },
   {
     path: '**',
