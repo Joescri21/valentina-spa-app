@@ -1,10 +1,8 @@
 import { Routes } from '@angular/router';
-import { LandingPage } from './public/landing-page/landing-page';
-import { LoginPage } from './auth/login-page/login-page';
-import { DashboardPage } from './client/dashboard-page/dashboard-page';
-import { PosPage } from './admin/pos-page/pos-page';
-import { Home } from './public/components/home/home';
-import { Catalogo } from './public/components/catalogo/catalogo';
+import { LoginPage } from './modulos/auth/login-page/login-page';
+import { LandingPage } from './modulos/landing-page/landing-page';
+import { Catalogo } from './shared/components/catalogo/catalogo';
+
 
 export const routes: Routes = [
   {

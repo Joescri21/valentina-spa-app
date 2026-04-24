@@ -13,3 +13,7 @@ html {
 [id] {
   scroll-margin-top: 80px;
 }
+
+main {
+  padding-top: 64px; /* O la altura que tenga tu navbar */
+}

@@ -1,4 +1,32 @@
-<div class="navbar bg-base-100 shadow-md fixed top-0 w-full z-100 px-4 md:px-8">
+<nav class="navbar bg-base-100 shadow-md fixed top-0 w-full z-100 px-4">
+  <div class="flex w-full justify-center md:hidden">
+    <a class="text-xl font-bold text-primary tracking-tighter cursor-pointer" (click)="scrollTo('inicio')">
+      VALENTINA <span class="font-light">SPA</span>
+    </a>
+  </div>
+
+  <div class="hidden md:flex w-full items-center">
+
+    <div class="navbar-start">
+      <a class="text-xl font-bold text-primary tracking-tighter cursor-pointer" (click)="scrollTo('inicio')">
+        VALENTINA <span class="font-light">SPA</span>
+      </a>
+    </div>
+
+    <div class="navbar-end flex mr-2">
+      <ul class="menu menu-horizontal px-1 font-semibold text-primary gap-6">
+        <li><a (click)="scrollTo('inicio')" class="hover:text-primary/70 transition-colors">Inicio</a></li>
+        <li><a (click)="scrollTo('servicios')" class="hover:text-primary/70 transition-colors">Servicios</a></li>
+        <li><a (click)="scrollTo('catalogo')" class="hover:text-primary/70 transition-colors">Catálogo</a></li>
+        <li><a (click)="scrollTo('contacto')" class="hover:text-primary/70 transition-colors">Contacto</a></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+
+<!-- <div class="navbar bg-base-100 shadow-md fixed top-0 w-full z-100 px-4 md:px-8">
 
   <div class="navbar-start">
     <div class="dropdown">
@@ -35,4 +63,4 @@
 
   </div>
 
-</div>
+</div> -->
