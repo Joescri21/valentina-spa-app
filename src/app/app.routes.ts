@@ -24,7 +24,7 @@ export const routes: Routes = [
     title: 'Iniciar Sesión',
   },
   {
-    path: 'booking',
+    path: 'reservar',
     component: BookingOptions,
     title: 'Opciones de Reserva',
   },
