@@ -3,8 +3,8 @@
 <section class="contain-content w-full flex flex-col items-center justify-center gap-4">
   <form class="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4 mt-30">
     <fieldset class="fieldset">
-      <label class="label">Email</label>
-      <input type="email" class="input validator" placeholder="Email" required />
+      <label class="label">Usuario</label>
+      <input type="text" class="input validator" placeholder="Usuario" required />
       <p class="validator-hint hidden">Required</p>
     </fieldset>
 
@@ -14,9 +14,10 @@
       <span class="validator-hint hidden">Required</span>
     </label>
 
-    <button class="btn btn-neutral mt-4" type="submit">Login</button>
-    <button class="btn btn-ghost mt-1" type="reset">Reset</button>
+    <button routerLink="" class="btn btn-neutral mt-4" type="submit">Login</button>
   </form>
+
+  <button routerLink="/home" class="btn btn-link mt-8 text-pink-500"> Regresar </button>
 </section>
 
 
