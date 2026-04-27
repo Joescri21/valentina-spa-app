@@ -9,13 +9,44 @@
 
       <div class="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl border border-primary/20 hover:shadow-2xl transition-all cursor-pointer">
           <div class="card-body">
-            <fieldset class="fieldset">
-              <label class="label">Email</label>
-              <input type="email" class="input" placeholder="Email" />
-              <label class="label">Password</label>
-              <input type="password" class="input" placeholder="Password" />
-              <button routerLink="/dashboard-cliente" class="btn btn-primary mt-4">Login</button>
-            </fieldset>
+            <!-- Mensaje de error -->
+            <div *ngIf="errorMessage" class="alert alert-error mb-4">
+              <span>{{ errorMessage }}</span>
+            </div>
+
+            <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+              <fieldset class="fieldset">
+                <label class="label">Email</label>
+                <input 
+                  type="email" 
+                  formControlName="email" 
+                  class="input" 
+                  placeholder="cliente@correo.com" 
+                />
+                <p class="text-error text-xs mt-1" *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+                  Email requerido
+                </p>
+
+                <label class="label mt-3">Contraseña</label>
+                <input 
+                  type="password" 
+                  formControlName="password" 
+                  class="input" 
+                  placeholder="Contraseña" 
+                />
+                <p class="text-error text-xs mt-1" *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+                  Contraseña requerida
+                </p>
+
+                <button 
+                  type="submit" 
+                  [disabled]="!loginForm.valid"
+                  class="btn btn-primary mt-4"
+                >
+                  Login
+                </button>
+              </fieldset>
+            </form>
           </div>
         </div>
 

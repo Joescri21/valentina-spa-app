@@ -3,6 +3,8 @@ import { LoginPage } from './modulos/auth/login-page/login-page';
 import { LandingPage } from './modulos/landing-page/landing-page';
 import { BookingOptions } from './modulos/auth/booking-options/booking-options';
 import { ClientDashboard } from './modulos/customer/client-dashboard/client-dashboard';
+import { HomeCite } from './modulos/customer/client-dashboard/home-cite/home-cite';
+import { AdminDasboard } from './modulos/admin/admin-dasboard/admin-dasboard';
 
 
 export const routes: Routes = [
@@ -22,9 +24,21 @@ export const routes: Routes = [
     title: 'Opciones de Reserva',
   },
   {
-    path: 'dashboard-cliente',
+    path: 'client-dashboard',
     component: ClientDashboard,
-    title: 'Panel del Cliente'
+    title: 'Dashboard Cliente',
+    children: [
+      {
+        path: '',
+        redirectTo: 'home',
+        pathMatch: 'full'
+      },
+      {
+        path: 'home',
+        component: HomeCite,
+        title: 'Home - Reservar tu citas'
+      }
+    ]
   },
   {
     path: '**',

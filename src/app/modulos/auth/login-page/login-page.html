@@ -1,20 +1,47 @@
 
-
 <section class="contain-content w-full flex flex-col items-center justify-center gap-4">
-  <form class="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4 mt-30">
+  <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4 mt-30">
+    
+    <!-- Mensaje de error -->
+    <div *ngIf="errorMessage" class="alert alert-error mb-4">
+      <span>{{ errorMessage }}</span>
+    </div>
+
+    <!-- Email -->
     <fieldset class="fieldset">
-      <label class="label">Usuario</label>
-      <input type="text" class="input validator" placeholder="Usuario" required />
-      <p class="validator-hint hidden">Required</p>
+      <label class="label">Email</label>
+      <input 
+        type="email" 
+        formControlName="email" 
+        class="input validator" 
+        placeholder="admin@valentinaspa.com" 
+      />
+      <p class="validator-hint text-error text-sm mt-1" *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+        Email requerido y válido
+      </p>
     </fieldset>
 
-    <label class="fieldset">
-      <span class="label">Password</span>
-      <input type="password" class="input validator" placeholder="Password" required />
-      <span class="validator-hint hidden">Required</span>
-    </label>
+    <!-- Password -->
+    <fieldset class="fieldset mt-4">
+      <label class="label">Contraseña</label>
+      <input 
+        type="password" 
+        formControlName="password" 
+        class="input validator" 
+        placeholder="Contraseña" 
+      />
+      <p class="validator-hint text-error text-sm mt-1" *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+        Contraseña requerida
+      </p>
+    </fieldset>
 
-    <button routerLink="" class="btn btn-neutral mt-4" type="submit">Login</button>
+    <button 
+      [disabled]="!loginForm.valid" 
+      class="btn btn-neutral mt-4" 
+      type="submit"
+    >
+      Login
+    </button>
   </form>
 
   <button routerLink="/home" class="btn btn-link mt-8 text-pink-500"> Regresar </button>
