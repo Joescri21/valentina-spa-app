@@ -38,7 +38,7 @@ export class LoginPage {
           this.router.navigate(['/client-dashboard']);
         }
       } else {
-        this.errorMessage = 'Credenciales incorrectas. Intenta con admin@valentinaspa.com / 123 o cliente@correo.com / 123';
+        this.errorMessage = 'Credenciales incorrectas.';
       }
     }
   }

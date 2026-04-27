@@ -38,7 +38,7 @@ export class BookingOptions {
           this.errorMessage = 'Solo clientes pueden reservar desde aquí. Usa login-page para admin.';
         }
       } else {
-        this.errorMessage = 'Credenciales incorrectas. Usa: cliente@correo.com / 123';
+        this.errorMessage = 'Credenciales incorrectas';
       }
     }
   }

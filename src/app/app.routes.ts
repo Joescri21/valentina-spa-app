@@ -41,6 +41,14 @@ export const routes: Routes = [
     ]
   },
   {
+    path: 'admin-dasboard',
+    component: AdminDasboard,
+    title: 'Dashboard Admin',
+    children: [
+      
+    ]
+  },
+  {
     path: '**',
     redirectTo: 'home'
   }
