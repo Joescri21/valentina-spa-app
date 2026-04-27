@@ -1,39 +1,168 @@
-<section class="overflow-x-auto">
+<section class="w-full">
+  <!-- Formulario de Reserva -->
+  <div *ngIf="mostrarFormulario && servicioSeleccionado" class="mb-8 bg-base-100 p-6 rounded-lg shadow-md">
+    <h2 class="text-2xl font-bold text-pink-500 mb-6">Reservar Cita</h2>
+    
+    <!-- Detalles del Servicio -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+      <div class="md:col-span-1">
+        <img 
+          [src]="servicioSeleccionado.imagen" 
+          [alt]="servicioSeleccionado.nombre"
+          class="w-full h-48 object-cover rounded-lg" />
+      </div>
+      
+      <div class="md:col-span-2 bg-base-200 p-4 rounded-lg">
+        <h3 class="text-xl font-bold text-pink-500 mb-3">{{ servicioSeleccionado.nombre }}</h3>
+        <p class="text-gray-700 mb-3">{{ servicioSeleccionado.descripcion }}</p>
+        
+        <div class="grid grid-cols-2 gap-4 text-sm">
+          <div class="bg-white p-2 rounded">
+            <span class="font-semibold">Duración:</span>
+            <p class="text-pink-500 font-bold">{{ servicioSeleccionado.duracion }} minutos</p>
+          </div>
+          <div class="bg-white p-2 rounded">
+            <span class="font-semibold">Precio:</span>
+            <p class="text-pink-500 font-bold">${{ servicioSeleccionado.precio.toFixed(2) }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
 
-  <h2 class="text-2xl font-bold text-pink-500 mb-8 text-center">Tus citas programas</h2>
+    <!-- Formulario -->
+    <form [formGroup]="formularioCita" (ngSubmit)="reservarCita()" class="space-y-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Nombre -->
+        <div>
+          <label class="label">Nombre Completo</label>
+          <input 
+            type="text" 
+            formControlName="clienteNombre"
+            placeholder="Tu nombre" 
+            class="input input-bordered w-full" />
+          <p class="text-error text-xs mt-1" *ngIf="formularioCita.get('clienteNombre')?.invalid && formularioCita.get('clienteNombre')?.touched">
+            Nombre requerido (mínimo 3 caracteres)
+          </p>
+        </div>
 
-  <table class="table">
-    <!-- head -->
-    <thead>
-      <tr>
-        <th></th>
-        <th>Citas</th>
-        <th>Tipo de Servicio</th>
-        <th>Fecha</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- row 1 -->
-      <tr>
-        <th>1</th>
-        <td>Cy Ganderton</td>
-        <td>Quality Control Specialist</td>
-        <td>Blue</td>
-      </tr>
-      <!-- row 2 -->
-      <tr>
-        <th>2</th>
-        <td>Hart Hagerty</td>
-        <td>Desktop Support Technician</td>
-        <td>Purple</td>
-      </tr>
-      <!-- row 3 -->
-      <tr>
-        <th>3</th>
-        <td>Brice Swyre</td>
-        <td>Tax Accountant</td>
-        <td>Red</td>
-      </tr>
-    </tbody>
-  </table>
+        <!-- Email -->
+        <div>
+          <label class="label">Email</label>
+          <input 
+            type="email" 
+            formControlName="clienteEmail"
+            placeholder="tu@email.com" 
+            class="input input-bordered w-full" />
+          <p class="text-error text-xs mt-1" *ngIf="formularioCita.get('clienteEmail')?.invalid && formularioCita.get('clienteEmail')?.touched">
+            Email válido requerido
+          </p>
+        </div>
+
+        <!-- Teléfono -->
+        <div>
+          <label class="label">Teléfono</label>
+          <input 
+            type="tel" 
+            formControlName="clienteTelefono"
+            placeholder="1234567890" 
+            class="input input-bordered w-full" />
+          <p class="text-error text-xs mt-1" *ngIf="formularioCita.get('clienteTelefono')?.invalid && formularioCita.get('clienteTelefono')?.touched">
+            Teléfono válido requerido (10 dígitos)
+          </p>
+        </div>
+
+        <!-- Fecha -->
+        <div>
+          <label class="label">Fecha</label>
+          <input 
+            type="date" 
+            formControlName="fecha"
+            class="input input-bordered w-full" />
+          <p class="text-error text-xs mt-1" *ngIf="formularioCita.get('fecha')?.invalid && formularioCita.get('fecha')?.touched">
+            Fecha requerida
+          </p>
+        </div>
+
+        <!-- Hora -->
+        <div>
+          <label class="label">Hora</label>
+          <input 
+            type="time" 
+            formControlName="hora"
+            class="input input-bordered w-full" />
+          <p class="text-error text-xs mt-1" *ngIf="formularioCita.get('hora')?.invalid && formularioCita.get('hora')?.touched">
+            Hora requerida
+          </p>
+        </div>
+      </div>
+
+      <div class="flex gap-3 pt-4">
+        <button 
+          type="submit" 
+          [disabled]="!formularioCita.valid"
+          class="btn btn-primary flex-1">
+          Confirmar Cita
+        </button>
+        <button 
+          type="button" 
+          (click)="seleccionarOtroServicio()"
+          class="btn btn-outline">
+          Cancelar
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Tabla de Citas Registradas -->
+  <div class="overflow-x-auto">
+    <h2 class="text-2xl font-bold text-pink-500 mb-4 text-center">Tus Citas Programadas</h2>
+    
+    <div *ngIf="citasRegistradas.length === 0" class="alert alert-info text-center">
+      <span>No tienes citas registradas. ¡Reserva una ahora!</span>
+    </div>
+
+    <table *ngIf="citasRegistradas.length > 0" class="table w-full">
+      <thead>
+        <tr class="bg-pink-100">
+          <th>Servicio</th>
+          <th>Duración</th>
+          <th>Cliente</th>
+          <th>Teléfono</th>
+          <th>Fecha</th>
+          <th>Hora</th>
+          <th>Precio</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cita of citasRegistradas" class="hover">
+          <td>
+            <div class="flex items-center gap-3">
+              <div class="avatar w-12 h-12 rounded">
+                <img [src]="cita.servicio.imagen" [alt]="cita.servicio.nombre" />
+              </div>
+              <div>
+                <span class="font-bold">{{ cita.servicio.nombre }}</span>
+                <br>
+                <span class="text-xs text-gray-500">{{ cita.servicio.descripcion }}</span>
+              </div>
+            </div>
+          </td>
+          <td>{{ cita.servicio.duracion }} min</td>
+          <td>{{ cita.clienteNombre }}</td>
+          <td>{{ cita.clienteTelefono }}</td>
+          <td>{{ obtenerFechaFormato(cita.fecha) }}</td>
+          <td>{{ cita.hora }}</td>
+          <td class="text-pink-500 font-bold">${{ cita.servicio.precio.toFixed(2) }}</td>
+          <td>
+            <button 
+              (click)="cancelarCita(cita.id)"
+              class="btn btn-sm btn-error btn-outline">
+              Cancelar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </section>

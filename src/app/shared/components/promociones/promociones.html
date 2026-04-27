@@ -2,43 +2,40 @@
   Promociones de mes
 </h2>
 
-<section class="flex flex-wrap justify-center-safe gap-6 mb-6" >
-
-  <div class="card bg-base-100 w-96 shadow-sm">
-    <figure class="px-10 pt-10">
+<section class="flex flex-wrap justify-center gap-6 mb-6">
+  <div *ngFor="let servicio of servicios" class="card bg-base-100 w-96 shadow-sm hover:shadow-lg transition-shadow">
+    <figure class="px-10 pt-10 bg-gray-100 rounded-t-xl">
       <img
-        src="card-1.jpg"
-        alt="Shoes"
-        class="rounded-xl" />
+        [src]="servicio.imagen"
+        [alt]="servicio.nombre"
+        class="rounded-xl h-48 w-full object-cover" />
     </figure>
     <div class="card-body items-center text-center">
-      <h2 class="card-title text-pink-500">Card Title</h2>
+      <h2 class="card-title text-pink-500">{{ servicio.nombre }}</h2>
       <p class="text-sm leading-relaxed text-gray-600">
-        A card component has a figure, a body part, and inside body there are title and actions parts
+        {{ servicio.descripcion }}
       </p>
-      <div class="card-actions">
-        <button routerLink="/reservar" class="btn btn-outline"> Reservar una cita </button>
+      
+      <!-- Información del servicio -->
+      <div class="w-full bg-base-200 rounded-lg p-3 my-2">
+        <div class="flex justify-between text-sm">
+          <span class="font-semibold">Duración:</span>
+          <span>{{ servicio.duracion }} min</span>
+        </div>
+        <div class="flex justify-between text-sm">
+          <span class="font-semibold">Precio:</span>
+          <span class="text-pink-500 font-bold">${{ servicio.precio.toFixed(2) }}</span>
+        </div>
+      </div>
+
+      <div class="card-actions w-full gap-2">
+        <button 
+          (click)="seleccionarServicio(servicio)"
+          class="btn btn-primary flex-1">
+          Reservar
+        </button>
       </div>
     </div>
   </div>
-
-  <div class="card bg-base-100 w-96 shadow-sm">
-    <figure class="px-10 pt-10">
-      <img
-        src="card-2.jpg"
-        alt="Shoes"
-        class="rounded-xl" />
-    </figure>
-    <div class="card-body items-center text-center">
-      <h2 class="card-title text-pink-500">Card Title</h2>
-      <p class="text-sm leading-relaxed text-gray-600">
-        A card component has a figure, a body part, and inside body there are title and actions parts
-      </p>
-      <div class="card-actions">
-        <button routerLink="/reservar" class="btn btn-outline"> Reservar una cita </button>
-      </div>
-    </div>
-  </div>
-
 </section>
 
