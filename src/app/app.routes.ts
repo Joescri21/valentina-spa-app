@@ -5,6 +5,8 @@ import { BookingOptions } from './modulos/auth/booking-options/booking-options';
 import { ClientDashboard } from './modulos/customer/client-dashboard/client-dashboard';
 import { HomeCite } from './modulos/customer/client-dashboard/home-cite/home-cite';
 import { AdminDasboard } from './modulos/admin/admin-dasboard/admin-dasboard';
+import { adminGuard } from './core/guards/admin-guard';
+import { clientGuard } from './core/guards/client-guard';
 
 
 export const routes: Routes = [
@@ -26,6 +28,7 @@ export const routes: Routes = [
   {
     path: 'client-dashboard',
     component: ClientDashboard,
+    canActivate: [clientGuard],
     title: 'Dashboard Cliente',
     children: [
       {
@@ -43,9 +46,10 @@ export const routes: Routes = [
   {
     path: 'admin-dasboard',
     component: AdminDasboard,
+    canActivate: [adminGuard],
     title: 'Dashboard Admin',
     children: [
-      
+
     ]
   },
   {

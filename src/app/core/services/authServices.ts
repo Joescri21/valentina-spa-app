@@ -42,19 +42,28 @@ export class Auth {
         name: user.name
       }));
       return true;
-  }
-  return false;
+    }
+    return false;
   }
 
   logout() {
     localStorage.removeItem('currentUser');
-    this.router.navigate(['/login']);
+    this.router.navigate(['/home']);
   }
 
   getUserRole(): string | null {
-    const User = JSON.parse(localStorage.getItem('currentUser') || '{}');
-    return User.role || null;
+    const user = JSON.parse(localStorage.getItem('currentUser') || '{}');
+    return user.role || null;
   }
 
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('currentUser');
+  }
 
+  getCurrentUser() {
+    return JSON.parse(localStorage.getItem('currentUser') || '{}');
+  }
 }
+
+
+
