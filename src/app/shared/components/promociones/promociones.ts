@@ -6,7 +6,6 @@ import { ServicioService, Servicio } from '../../../core/services/servicio.servi
 @Component({
   selector: 'app-promociones',
   imports: [
-    RouterLink,
     CommonModule,
     RouterModule
   ],

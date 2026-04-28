@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
+
 export interface Servicio {
   id: number;
   nombre: string;
@@ -29,7 +30,7 @@ export class ServicioService {
       id: 1,
       nombre: 'Masaje Relajante',
       descripcion: 'Masaje completo de relajación corporal',
-      imagen: 'https://images.unsplash.com/photo-1544161515-81aae3ff8556?w=400&h=300&fit=crop',
+      imagen: 'https://saiseiclinics.com/wp-content/uploads/2024/09/Diferencias-entre-masaje-descontracturante-y-relajante-1536x864.jpg',
       duracion: 60,
       precio: 85.00
     },
@@ -40,14 +41,6 @@ export class ServicioService {
       imagen: 'https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400&h=300&fit=crop',
       duracion: 45,
       precio: 65.00
-    },
-    {
-      id: 3,
-      nombre: 'Tratamiento Corporal',
-      descripcion: 'Exfoliación y masaje corporal completo',
-      imagen: 'https://images.unsplash.com/photo-1599654445240-a987f5f5eb09?w=400&h=300&fit=crop',
-      duracion: 90,
-      precio: 120.00
     },
     {
       id: 4,
